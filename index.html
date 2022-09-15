@@ -1,13 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primer desafio</title>
+    <!--Estilos-->
+    <link rel="stylesheet" href="styles.css">
+    <!--FUENTE-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <!---->
+    <title>Calculador de Baldozas</title>
 </head>
 <body>
-    
-    <script src="main.js"></script>
+    <header></header>
+    <main>
+        <div class="titulo">
+            <h1>CALCULADOR DE BALDOZAS</h1>
+            <h2>Calcula la cantidad necesaria para tu piso</h2>
+        </div>
+        <div class="inputDatos">
+            <form action="" id="formDatos">
+                <label for="nombrePiso">Ingrese el nombre de su piso:</label>
+                <input type="text" name="" id="nombrePiso">
+
+                <label for="lado1">Ingrese el lado de su baldoza (en cm):</label>
+                <input type="text" name="" id="lado1">
+
+                <label for="lado2">Ingrese el otro lado de su baldoza (en cm):</label>
+                <input type="text" name="" id="lado2">
+
+                <label for="largo">Ingrese el largo de su piso (en metros):</label>
+                <input type="text" name="" id="largo">
+
+                <label for="ancho">Ingrese el ancho de su piso (en metros):</label>
+                <input type="text" name="" id="ancho">
+                <button>Calcular</button>
+            </form>
+        </div>
+    </main>
+
+    <footer> 
+        <p>Todos los derechos reservados <a href="https://www.instagram.com/ferlara25/">Fernando Lara</a></p>
+    </footer>
+
+    <script src="main.js"></script> 
 </body>
 </html>
