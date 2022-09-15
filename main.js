@@ -15,6 +15,7 @@ class pisoYBaldoza {
 const arrayBaldozas = [];
 
 //Funciones
+
 function calculadoraCantidad() {
     let nombre = (prompt("Ingrese el nombre del ambiente (ej: Living): ")).toLowerCase();
     let lado1 = parseInt(prompt("Ingrese un lado de la baldoza en centímetros: "));
@@ -30,6 +31,15 @@ function calculadoraCantidad() {
 
     arrayBaldozas.push(baldozaPersonalizada);
 }
+function buscador() {
+    let nombreIngresado = (prompt("Ingrese el nombre del ambiente calculado: ")).toLowerCase();
+    const buscado = arrayBaldozas.find(pisoYBaldoza => pisoYBaldoza.nombre === nombreIngresado);
+    if (buscado != undefined) {
+        alert("La cantidad de baldozas para " + buscado.nombre + " es de " + buscado.cantidad);
+    }else alert("No se ha encontrado el cálculo ingresado, recargue la página");
+}
+
+///EJECUCIÓN
 
 let opcion = parseInt(prompt("Ingrese la cantidad de pisos que desea calcular: (Por ejemplo, en caso de que quiera calcular el living y comedor con diferentes baldozas cada uno, ingrese 2.) " ));
 
@@ -45,12 +55,10 @@ if (opcion != 1){
     alert("La cantidad total de baldozas para los " + opcion + " pisos es de: " + totalBaldozas);
 }else alert("La cantidad total de baldozas para: " + baldozaPersonalizada.nombre + " es de: " + totalBaldozas);
 
-//Funcion buscar 
+// buscar 
 let deseaBuscar = (prompt("Desea buscar alguno de los cálculos realizados? Ingrese si o no: ")).toLowerCase();
 
 if (deseaBuscar == "si"){
-    let nombreIngresado = (prompt("Ingrese el nombre del ambiente calculado: ")).toLowerCase();
-
-    const buscado = arrayBaldozas.find(pisoYBaldoza => pisoYBaldoza.nombre === nombreIngresado);
-    alert("La cantidad de baldozas para " + buscado.nombre + " es de " + buscado.cantidad);
+    buscador();
+    alert("Gracias por utilizar nuestro calculador!");
 }
