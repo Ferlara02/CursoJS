@@ -74,8 +74,8 @@ const contenedorBaldozas = document.getElementById("contenedorBaldozas");
 arrayBaldozas.forEach(pisoYBaldoza => {
     let div = document.createElement("div");
     div.innerHTML = `<h4 class="baldoza"> ${(pisoYBaldoza.nombre).toUpperCase()} </h4>
-                    <p>Cantidad de baldozas: ${(pisoYBaldoza.cantidad).toFixed(2)} </p>
-                    <p>Tamaño baldoza: ${pisoYBaldoza.lado1}cm X ${pisoYBaldoza.lado2} cm.</p>
+                    <p>Cantidad de baldozas: ${(pisoYBaldoza.cantidad).toFixed(1)} </p>
+                    <p>Tamaño baldoza: ${pisoYBaldoza.lado1}cm X ${pisoYBaldoza.lado2}cm.</p>
                     <p>Área del ambiente: ${pisoYBaldoza.ancho * pisoYBaldoza.largo}m² </p>
 
                     <button class="btnCarrito">Agregar al carrito </button>`;
