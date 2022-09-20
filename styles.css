@@ -10,21 +10,67 @@ body {
     min-height: 100vh;
     grid-template-rows: auto 1fr auto;
 }
-.titulo {
+header {
     text-align: center;
-    margin: 1rem;
+    background-color: #DFBA69;
+    padding: 1rem;
+}
+main {
+    margin-top: 1rem;
 }
 .titulo h1 {
     font-size: 2rem;
 }
 .titulo h2 {
-    color: rgb(123, 123, 123);
     font-size: 1rem;
 }
 .inputDatos {
     display: flex;
     justify-content: center;
 }
+h3 {
+    text-align: center;
+}
+#contenedorBaldozas{
+    text-align: center;
+    margin: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#contenedorBaldozas div {
+    margin: 1rem;
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+#contenedorBaldozas div p {
+    margin: 1rem;
+}
+.baldoza {
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    width: 10rem;
+    text-align: center;
+}
+.btnCarrito {
+    padding: 0.5rem;
+    border-radius: 6px;
+    text-align: center;
+    border: 2px solid #DFBA69;
+    color: black;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.1s ease-in-out;
+}
+.btnCarrito:hover {
+    background-color: #DFBA69;
+}
+
 form{
     width: 60%;
     margin: 1rem;
