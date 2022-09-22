@@ -11,11 +11,7 @@ class pisoYBaldoza {
 }
 //Array
 const arrayBaldozas = [];
-const arrayBaldozasCarrito = [];
 //
-
-const resultados = document.getElementById("resultados");
-
 
 //Funciones
 
@@ -33,16 +29,7 @@ function calculaCantidad() {
     //alert("La cantidad de baldozas que necesita para cubrir su " + nombre + " es de: " + baldozaPersonalizada.cantidad);
     
     arrayBaldozas.push(baldozaPersonalizada);
-    arrayBaldozasCarrito.push(baldozaPersonalizada);
 }
-
-/*function buscaBaldozas() {
-    let nombreIngresado = (prompt("Ingrese el nombre del ambiente calculado: ")).toLowerCase();
-    const buscado = arrayBaldozas.find(pisoYBaldoza => pisoYBaldoza.nombre === nombreIngresado);
-    if (buscado != undefined) {
-        alert("La cantidad de baldozas para " + buscado.nombre + " es de " + buscado.cantidad);
-    }else alert("No se ha encontrado el cálculo ingresado, recargue la página");
-}*/
 
 //Formulario con Eventos
 const formDatos = document.getElementById("formDatos");
@@ -50,23 +37,16 @@ const formDatos = document.getElementById("formDatos");
 formDatos.addEventListener("submit", (e) => {
     e.preventDefault();
     calculaCantidad();
-    arrayBaldozas.forEach(pisoYBaldoza => {
-        let div = document.createElement("div");
-        div.innerHTML = `<h4 class="baldoza"> ${(pisoYBaldoza.nombre).toUpperCase()} </h4>
-                        <p>Cantidad de baldozas: ${(pisoYBaldoza.cantidad).toFixed(1)} </p>
-                        <p>Tamaño baldoza: ${pisoYBaldoza.lado1}cm X ${pisoYBaldoza.lado2}cm.</p>
-                        <p>Área del ambiente: ${pisoYBaldoza.ancho * pisoYBaldoza.largo}m² </p>
+    let div = document.createElement("div");
+    div.innerHTML = `<h4 class="baldoza"> ${(baldozaPersonalizada.nombre).toUpperCase()} </h4>
+                    <p>Cantidad de baldozas: ${(baldozaPersonalizada.cantidad).toFixed(1)} </p>
+                    <p>Tamaño baldoza: ${baldozaPersonalizada.lado1}cm X ${baldozaPersonalizada.lado2}cm.</p>
+                    <p>Área del ambiente: ${baldozaPersonalizada.ancho * baldozaPersonalizada.largo}m² </p>
     
-                        <button class="btnCarrito">Agregar al carrito </button>`;
-    
-        contenedorBaldozas.appendChild(div);
-    })
-    arrayBaldozas.shift();
+                    <button class="btnCarrito">Agregar al carrito </button>`;
+    contenedorBaldozas.appendChild(div);
     formDatos.reset();
 })
-
-
-///EJECUCIÓN
 
 //DOM
 const contenedorBaldozas = document.getElementById("contenedorBaldozas");
@@ -75,6 +55,7 @@ const btnClear = document.getElementById("btnClear");
 
 btnClear.addEventListener("click", () => {
     contenedorBaldozas.innerHTML = ``;
+    console.log(arrayBaldozas);
 });
 
 //
@@ -100,3 +81,11 @@ if (deseaBuscar == "si"){
 }
 
 */
+
+/*function buscaBaldozas() {
+    let nombreIngresado = (prompt("Ingrese el nombre del ambiente calculado: ")).toLowerCase();
+    const buscado = arrayBaldozas.find(pisoYBaldoza => pisoYBaldoza.nombre === nombreIngresado);
+    if (buscado != undefined) {
+        alert("La cantidad de baldozas para " + buscado.nombre + " es de " + buscado.cantidad);
+    }else alert("No se ha encontrado el cálculo ingresado, recargue la página");
+}*/
