@@ -22,28 +22,27 @@
         </div>
     </header>
     <main>
-        <h3>RESULTADOS: </h3>
-        <div id="contenedorBaldozas">
-        </div>
         <div class="inputDatos">
             <form action="" id="formDatos">
                 <label for="nombrePiso">Ingrese el nombre de su piso:</label>
-                <input type="text" name="" id="nombrePiso">
+                <input type="text" name="" id="nombrePiso" placeholder="Ejemplo: Baño">
 
-                <label for="lado1">Ingrese el lado de su baldoza (en cm):</label>
-                <input type="text" name="" id="lado1">
+                <label for="lado1">Ingrese el lado de su baldoza:</label>
+                <input type="number" name="" id="lado1" placeholder="En centímetros">
 
-                <label for="lado2">Ingrese el otro lado de su baldoza (en cm):</label>
-                <input type="text" name="" id="lado2">
+                <label for="lado2">Ingrese el otro lado de su baldoza:</label>
+                <input type="number" name="" id="lado2" placeholder="En centímetros">
 
-                <label for="largo">Ingrese el largo de su piso (en metros):</label>
-                <input type="text" name="" id="largo">
+                <label for="largo">Ingrese el largo de su piso:</label>
+                <input type="number" name="" id="largo" placeholder="En metros">
 
-                <label for="ancho">Ingrese el ancho de su piso (en metros):</label>
-                <input type="text" name="" id="ancho">
-                <button>Calcular</button>
+                <label for="ancho">Ingrese el ancho de su piso:</label>
+                <input type="number" name="" id="ancho" placeholder="En metros">
+                <button class="boton">Calcular</button>
             </form>
         </div>
+        <div id="contenedorBaldozas"></div>
+        <button class="boton2" id="btnClear">Borrar cálculos</button>
         
     </main>
 
