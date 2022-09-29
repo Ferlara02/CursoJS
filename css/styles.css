@@ -59,14 +59,14 @@ h2 {
 }
 
 
-#contenedorBaldozas{
+#contenedorBaldozas, #contenedorCarrito{
     text-align: center;
     margin: 0.5rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-#contenedorBaldozas div {
+#contenedorBaldozas div, #contenedorCarrito div {
     margin: 1rem;
     border: 1px solid grey;
     display: flex;
@@ -75,7 +75,7 @@ h2 {
     align-items: center;
     padding: 1rem;
 }
-#contenedorBaldozas div p {
+#contenedorBaldozas div p, #contenedorCarrito div p {
     margin: 1rem;
 }
 .baldoza {
@@ -139,6 +139,7 @@ form input {
 
 .boton2 {
     background-color: #1d1b1e;
+    margin: 1rem;
     color: #DFBA69;
     padding: 20px;
     transition: all 0.2s ease;

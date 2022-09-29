@@ -7,6 +7,7 @@
     <!--Estilos-->
     <link rel="stylesheet" href="css/styles.css">
     <!--FUENTE-->
+    <link rel="stylesheet" href="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -19,7 +20,7 @@
         <h1>BALDOZAS</h1>
         <ul>
             <li class="pages"><a href="./index.html">Inicio</a></li>
-            <li class="pages"><a href="page/carrito.html">Carrito</a></li>
+            <li class="pages"><i class="fa-solid fa-cart-shopping"></i></li>
         </ul> 
     </header>
     <main>
@@ -44,14 +45,18 @@
             </form>
         </div>
         <div id="contenedorBaldozas"></div>
-        <button class="boton2" id="btnClear">Borrar cálculos</button>
         
+        <button class="boton2" id="btnClear">Borrar historial</button>
+        <div id="contenedorCarrito">
+        </div>
+        <button class="boton2" id="eliminarCarritoTotal">Eliminar <i class="fa-solid fa-cart-shopping"></i></button>
     </main>
 
     <footer> 
         <p>Todos los derechos reservados <a href="https://www.instagram.com/ferlara25/" target="_blank">Fernando Lara</a></p>
     </footer>
 
+    <script src="https://kit.fontawesome.com/0fa52e5c73.js" crossorigin="anonymous"></script>
     <script src="main.js"></script> 
 </body>
 </html>

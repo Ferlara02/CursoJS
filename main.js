@@ -10,7 +10,11 @@ class pisoYBaldoza {
     }
 }
 //Array
+
+
+
 const arrayBaldozas = [];
+
 //
 
 // variables input
@@ -28,7 +32,11 @@ function calculaCantidad() {
     console.log(baldozaPersonalizada);
     
     arrayBaldozas.push(baldozaPersonalizada);
+    localStorage.setItem("baldozas", JSON.stringify(arrayBaldozas));
 }
+
+
+
 
 //DOM
 const contenedorBaldozas = document.getElementById("contenedorBaldozas");
@@ -36,34 +44,104 @@ const contenedorBaldozas = document.getElementById("contenedorBaldozas");
 //Formulario con Eventos
 const formDatos = document.getElementById("formDatos");
 
+if(localStorage.getItem("baldozas")) {
+    let baldoza = JSON.parse(localStorage.getItem("baldozas"));
+    for(let i = 0; i < baldoza.length; i++) {
+        arrayBaldozas.push(baldoza[i]);
+    }
+}
+
 formDatos.addEventListener("submit", (e) => {
     e.preventDefault();
     if(lado1.value.length == 0 || lado2.value.length == 0 || largo.value.length == 0 || ancho.value.length == 0){
         alert("No deje campos vacíos");
     }else {
         calculaCantidad();
-        let div = document.createElement("div");
-        div.innerHTML = `<h3 class="baldoza"> ${(baldozaPersonalizada.nombre).toUpperCase()} </h3>
-                        <p>Cantidad de baldozas: ${(baldozaPersonalizada.cantidad).toFixed(1)} </p>
-                        <p>Tamaño baldoza: ${baldozaPersonalizada.lado1}cm X ${baldozaPersonalizada.lado2}cm.</p>
-                        <p>Área del ambiente: ${baldozaPersonalizada.ancho * baldozaPersonalizada.largo}m² </p>
+        contenedorBaldozas.innerHTML = ``;
+        arrayBaldozas.forEach(baldoza => {
+            const div = document.createElement("div");
+            div.innerHTML = `<h3 class="baldoza"> ${(baldoza.nombre).toUpperCase()}</h3>
+                        <p>Cantidad de baldozas: ${(baldoza.cantidad).toFixed(1)} </p>
+                        <p>Tamaño baldoza: ${baldoza.lado1}cm X ${baldozaPersonalizada.lado2}cm.</p>
+                        <p>Área del ambiente: ${baldoza.ancho * baldoza.largo}m² </p>
         
-                        <button class="btnCarrito">Agregar al carrito </button>`;
-        contenedorBaldozas.appendChild(div);
-        formDatos.reset();
+                        <button class="btnCarrito" id = "carritoBoton${arrayBaldozas.indexOf(baldoza)}">Agregar al carrito </button>`;
+            contenedorBaldozas.appendChild(div);
+            const carritoBoton = document.getElementById(`carritoBoton${arrayBaldozas.indexOf(baldoza)}`);
+            carritoBoton.addEventListener("click", (e) => {
+                agregaAlCarrito(baldoza.nombre);
+                console.log(carrito);
+            });
+        });
     }
+    formDatos.reset();
 });
 
 //Boton borrar calculos
 
 const btnClear = document.getElementById("btnClear");
 
-btnClear.addEventListener("click", () => {
+
+btnClear.addEventListener("click", (e) => {
+    e.preventDefault();
     contenedorBaldozas.innerHTML = ``;
+    for(let i = 0; i < arrayBaldozas.length; i++) {
+        arrayBaldozas.splice(i);
+    }
     console.log(arrayBaldozas);
+    localStorage.clear();
 });
 
 //
+//CARRITO
+const contenedorCarrito = document.getElementById("contenedorCarrito");
+
+const carrito = [];
+
+
+const eliminarCarritoTotal = document.getElementById("eliminarCarritoTotal");
+
+
+eliminarCarritoTotal.addEventListener("click", (e) => {
+    e.preventDefault();
+    contenedorCarrito.innerHTML = ``;
+    for(let i = 0; i < carrito.length; i++) {
+        arrayBaldozas.splice(i);
+    }
+});
+
+const agregaAlCarrito = (nombre) => {
+    const baldozaCarrito = arrayBaldozas.find(baldoza => baldoza.nombre === nombre);
+    carrito.push(baldozaCarrito);
+    carrito.forEach(baldoza => {
+        const div = document.createElement("div");
+        
+        div.innerHTML = `
+                            <h3 class="baldoza"> ${(baldoza.nombre).toUpperCase()}</h3>
+                            <p>Cantidad de baldozas: ${(baldoza.cantidad).toFixed(1)} </p>
+                            <p>Tamaño baldoza: ${baldoza.lado1}cm X ${baldozaPersonalizada.lado2}cm.</p>
+                            <p>Precio: ${(baldoza.cantidad) * 40}</p>`;
+        contenedorCarrito.appendChild(div);
+        
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////
+
 
 //let totalBaldozas;
 
