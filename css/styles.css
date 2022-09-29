@@ -86,6 +86,7 @@ h2 {
     text-align: center;
 }
 .btnCarrito {
+    margin: 1rem;
     padding: 0.5rem;
     border-radius: 6px;
     text-align: center;
@@ -151,7 +152,23 @@ form input {
     cursor: pointer;
 }
 
+.precioCarrito {
+    background-color: #DFBA69;
+    border-radius: 5px;
+    padding: 0.5rem;
+    color: #1d1b1e;
+    font-size: larger;
+}
+.baldozaImg {
+    margin: 0.5rem;
+    width: 40%;
+}
 
+#totalCompra {
+    padding: 0.5rem;
+    border: 1px solid #1d1b1e;
+    border-radius: 5px;
+}
 
 footer {
     text-align: center;

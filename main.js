@@ -65,10 +65,10 @@ formDatos.addEventListener("submit", (e) => {
                         <p>Tamaño baldoza: ${baldoza.lado1}cm X ${baldozaPersonalizada.lado2}cm.</p>
                         <p>Área del ambiente: ${baldoza.ancho * baldoza.largo}m² </p>
         
-                        <button class="btnCarrito" id = "carritoBoton${arrayBaldozas.indexOf(baldoza)}">Agregar al carrito </button>`;
+                        <button class="btnCarrito" id = "carritoBoton${arrayBaldozas.indexOf(baldoza)}">Agregar al <i class="fa-solid fa-cart-shopping"></i> </button>`;
             contenedorBaldozas.appendChild(div);
             const carritoBoton = document.getElementById(`carritoBoton${arrayBaldozas.indexOf(baldoza)}`);
-            carritoBoton.addEventListener("click", (e) => {
+            carritoBoton.addEventListener("click", () => {
                 agregaAlCarrito(baldoza.nombre);
                 console.log(carrito);
             });
@@ -98,77 +98,79 @@ const contenedorCarrito = document.getElementById("contenedorCarrito");
 
 const carrito = [];
 
+const totalCompra = document.getElementById("totalCompra");
 
 const eliminarCarritoTotal = document.getElementById("eliminarCarritoTotal");
 
+
+if(localStorage.getItem("baldozasCarrito")) {
+    let baldozasCarrito = JSON.parse(localStorage.getItem("baldozasCarrito"));
+    for(let i = 0; i < baldozasCarrito.length; i++) {
+        carrito.push(baldozasCarrito[i]);
+    }
+}
+
+const mostrarCarrito = document.getElementById("mostrarCarrito");
+
+
+/** MOSTRAR CARRITO ALMACENADO EN LOCALSTORAGE**/
+
+mostrarCarrito.addEventListener("click", () => {
+    actualizaCarrito();
+    calculaTotalCompra();
+})
+
+/** BOTON ELIMINAR TOTAL CARRITO **/
 
 eliminarCarritoTotal.addEventListener("click", (e) => {
     e.preventDefault();
     contenedorCarrito.innerHTML = ``;
     for(let i = 0; i < carrito.length; i++) {
-        arrayBaldozas.splice(i);
+        carrito.splice(i);
     }
+    calculaTotalCompra();
+    localStorage.clear();
 });
+
+
+const actualizaCarrito = () => {
+    contenedorCarrito.innerHTML = "";
+    carrito.forEach(baldoza => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+                        <h3 class="baldoza"> ${(baldoza.nombre).toUpperCase()}</h3>
+                        <img class = "baldozaImg" src="img/baldoza2.png" alt="Baldoza">
+                        <p>Cantidad de baldozas: ${(baldoza.cantidad).toFixed(1)} </p>
+                        <p>Tamaño baldoza: ${baldoza.lado1}cm X ${baldoza.lado2}cm.</p>
+                        <p class = "precioCarrito">Precio: $${((baldoza.cantidad) * 40).toFixed(2)}</p>
+                        <button onClick="eliminaDelCarrito(${baldoza.nombre})" class="btnCarrito">Eliminar del <i class="fa-solid fa-cart-shopping"></i></button>`;
+        contenedorCarrito.appendChild(div);
+    })
+}
 
 const agregaAlCarrito = (nombre) => {
     const baldozaCarrito = arrayBaldozas.find(baldoza => baldoza.nombre === nombre);
     carrito.push(baldozaCarrito);
+    actualizaCarrito();
+    localStorage.setItem("baldozasCarrito", JSON.stringify(carrito));
+    calculaTotalCompra();
+}
+
+/**BOTON DE ELIMINAR INDIVIDUAL **/
+function eliminaDelCarrito(nombre) {
+    const baldozaElim = carrito.find(baldoza => baldoza.nombre === nombre);
+    carrito.splice(carrito.indexOf(baldozaElim), 1);
+    actualizaCarrito();
+}
+
+/***********CALCULAR TOTAL COMPRA *****/
+const totalSpan = document.getElementById("total");
+
+const calculaTotalCompra = () => {
+    let total = 0;
     carrito.forEach(baldoza => {
-        const div = document.createElement("div");
-        
-        div.innerHTML = `
-                            <h3 class="baldoza"> ${(baldoza.nombre).toUpperCase()}</h3>
-                            <p>Cantidad de baldozas: ${(baldoza.cantidad).toFixed(1)} </p>
-                            <p>Tamaño baldoza: ${baldoza.lado1}cm X ${baldozaPersonalizada.lado2}cm.</p>
-                            <p>Precio: ${(baldoza.cantidad) * 40}</p>`;
-        contenedorCarrito.appendChild(div);
-        
-    });
+        total += (baldoza.cantidad * 40);
+    })
+    totalSpan.innerHTML = (total).toFixed(2);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////
-
-
-//let totalBaldozas;
-
-/* for (let i = 0; i < opcion; i++){
-    calculaCantidad()
-    //sumaBaldozas += arrayCalculos[i];
-    totalBaldozas = arrayBaldozas.reduce((acumulador, elemento) => acumulador + elemento.cantidad, 0);
-}*/
-
-/*if (opcion != 1){
-    alert("La cantidad total de baldozas para los " + opcion + " pisos es de: " + totalBaldozas);
-}else alert("La cantidad total de baldozas para: " + baldozaPersonalizada.nombre + " es de: " + totalBaldozas);
-
-// buscar 
-let deseaBuscar = (prompt("Desea buscar alguno de los cálculos realizados? Ingrese si o no: ")).toLowerCase();
-
-if (deseaBuscar == "si"){
-    buscaBaldozas();
-    alert("Gracias por utilizar nuestro calculador!");
-}
-
-*/
-
-/*function buscaBaldozas() {
-    let nombreIngresado = (prompt("Ingrese el nombre del ambiente calculado: ")).toLowerCase();
-    const buscado = arrayBaldozas.find(pisoYBaldoza => pisoYBaldoza.nombre === nombreIngresado);
-    if (buscado != undefined) {
-        alert("La cantidad de baldozas para " + buscado.nombre + " es de " + buscado.cantidad);
-    }else alert("No se ha encontrado el cálculo ingresado, recargue la página");
-}*/
