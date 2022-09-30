@@ -143,7 +143,7 @@ const actualizaCarrito = () => {
                         <p>Cantidad de baldozas: ${(baldoza.cantidad).toFixed(1)} </p>
                         <p>Tamaño baldoza: ${baldoza.lado1}cm X ${baldoza.lado2}cm.</p>
                         <p class = "precioCarrito">Precio: $${((baldoza.cantidad) * 40).toFixed(2)}</p>
-                        <button onClick="eliminaDelCarrito(${baldoza.nombre})" class="btnCarrito">Eliminar del <i class="fa-solid fa-cart-shopping"></i></button>`;
+                        <button onClick = "eliminaDelCarrito('${baldoza.nombre}')" class = "btnCarrito">Eliminar del <i class="fa-solid fa-cart-shopping"></i></button>`;
         contenedorCarrito.appendChild(div);
     })
 }
@@ -161,6 +161,7 @@ function eliminaDelCarrito(nombre) {
     const baldozaElim = carrito.find(baldoza => baldoza.nombre === nombre);
     carrito.splice(carrito.indexOf(baldozaElim), 1);
     actualizaCarrito();
+    calculaTotalCompra();
 }
 
 /***********CALCULAR TOTAL COMPRA *****/
