@@ -10,19 +10,15 @@ class pisoYBaldoza {
     }
 }
 //Array
-
-
-
-const arrayBaldozas = [];
-
-//
+let arrayBaldozas = [];
 
 // variables input
-let nombre = document.getElementById("nombrePiso");
-let lado1 = document.getElementById("lado1");
-let lado2 = document.getElementById("lado2");
-let largo = document.getElementById("largo");
-let ancho = document.getElementById("ancho");
+let {nombre, lado1, lado2, largo, ancho} = pisoYBaldoza;
+nombre = document.getElementById("nombrePiso");
+lado1 = document.getElementById("lado1");
+lado2 = document.getElementById("lado2");
+largo = document.getElementById("largo");
+ancho = document.getElementById("ancho");
 
 //Funciones
 function calculaCantidad() {
@@ -37,19 +33,13 @@ function calculaCantidad() {
 
 
 
-
 //DOM
 const contenedorBaldozas = document.getElementById("contenedorBaldozas");
 
 //Formulario con Eventos
 const formDatos = document.getElementById("formDatos");
 
-if(localStorage.getItem("baldozas")) {
-    let baldoza = JSON.parse(localStorage.getItem("baldozas"));
-    for(let i = 0; i < baldoza.length; i++) {
-        arrayBaldozas.push(baldoza[i]);
-    }
-}
+arrayBaldozas = localStorage.getItem("baldozas") ? JSON.parse(localStorage.getItem("baldozas")) : [];
 
 formDatos.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -89,26 +79,21 @@ btnClear.addEventListener("click", (e) => {
         arrayBaldozas.splice(i);
     }
     console.log(arrayBaldozas);
-    localStorage.clear();
+    localStorage.removeItem('baldozas');
 });
 
 //
 //CARRITO
 const contenedorCarrito = document.getElementById("contenedorCarrito");
 
-const carrito = [];
+let carrito = [];
 
 const totalCompra = document.getElementById("totalCompra");
 
 const eliminarCarritoTotal = document.getElementById("eliminarCarritoTotal");
 
+carrito = localStorage.getItem("baldozasCarrito") ? JSON.parse(localStorage.getItem("baldozasCarrito")) : [];
 
-if(localStorage.getItem("baldozasCarrito")) {
-    let baldozasCarrito = JSON.parse(localStorage.getItem("baldozasCarrito"));
-    for(let i = 0; i < baldozasCarrito.length; i++) {
-        carrito.push(baldozasCarrito[i]);
-    }
-}
 
 const mostrarCarrito = document.getElementById("mostrarCarrito");
 
@@ -118,7 +103,7 @@ const mostrarCarrito = document.getElementById("mostrarCarrito");
 mostrarCarrito.addEventListener("click", () => {
     actualizaCarrito();
     calculaTotalCompra();
-})
+});
 
 /** BOTON ELIMINAR TOTAL CARRITO **/
 
@@ -129,7 +114,7 @@ eliminarCarritoTotal.addEventListener("click", (e) => {
         carrito.splice(i);
     }
     calculaTotalCompra();
-    localStorage.clear();
+    localStorage.removeItem('baldozasCarrito');
 });
 
 
@@ -145,7 +130,7 @@ const actualizaCarrito = () => {
                         <p class = "precioCarrito">Precio: $${((baldoza.cantidad) * 40).toFixed(2)}</p>
                         <button onClick = "eliminaDelCarrito('${baldoza.nombre}')" class = "btnCarrito">Eliminar del <i class="fa-solid fa-cart-shopping"></i></button>`;
         contenedorCarrito.appendChild(div);
-    })
+    });
 }
 
 const agregaAlCarrito = (nombre) => {
