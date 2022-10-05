@@ -44,7 +44,11 @@ arrayBaldozas = localStorage.getItem("baldozas") ? JSON.parse(localStorage.getIt
 formDatos.addEventListener("submit", (e) => {
     e.preventDefault();
     if(lado1.value.length == 0 || lado2.value.length == 0 || largo.value.length == 0 || ancho.value.length == 0){
-        alert("No deje campos vacíos");
+        Swal.fire({
+            title: "No deje campos vacíos.",
+            icon: "warning",
+            confirmButtonText: "Aceptar"
+        });
     }else {
         calculaCantidad();
         contenedorBaldozas.innerHTML = ``;
@@ -107,14 +111,32 @@ mostrarCarrito.addEventListener("click", () => {
 
 /** BOTON ELIMINAR TOTAL CARRITO **/
 
-eliminarCarritoTotal.addEventListener("click", (e) => {
-    e.preventDefault();
-    contenedorCarrito.innerHTML = ``;
-    for(let i = 0; i < carrito.length; i++) {
-        carrito.splice(i);
-    }
-    calculaTotalCompra();
-    localStorage.removeItem('baldozasCarrito');
+eliminarCarritoTotal.addEventListener("click", () => {
+    carrito.length !== 0 &&
+        Swal.fire({
+            title: "¿Seguro que quiere eliminar todo el carrito?",
+            icon: "warning",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#1d1b1e",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            cancelButtonColor: "#DFBA69",
+        }).then((result)=> {
+            if(result.isConfirmed) {
+                //elimino fideos de un carrito
+                contenedorCarrito.innerHTML = ``;
+                for(let i = 0; i < carrito.length; i++) {
+                    carrito.splice(i);
+                }
+                calculaTotalCompra();
+                localStorage.removeItem('baldozasCarrito');
+                Swal.fire({
+                    title:"Carrito eliminado",
+                    icon: "success",
+                    confirmButtonText: "Aceptar"
+                });
+            }
+        })
 });
 
 
@@ -139,6 +161,12 @@ const agregaAlCarrito = (nombre) => {
     actualizaCarrito();
     localStorage.setItem("baldozasCarrito", JSON.stringify(carrito));
     calculaTotalCompra();
+    Toastify({
+        text: "Producto agregado al carrito.",
+        duration: 1000,
+        position: "right",
+        gravity: "bottom",
+    }).showToast();
 }
 
 /**BOTON DE ELIMINAR INDIVIDUAL **/

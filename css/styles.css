@@ -1,6 +1,6 @@
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0%;
+    padding: 0%;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
@@ -23,6 +23,7 @@ header h1 {
 }
 header ul {
     display: flex;
+    align-items: center;
 }
 .pages {
     list-style: none;
@@ -40,141 +41,275 @@ header ul {
     color: #DFBA69;
 }
 
+@media (max-width: 576px) {
+    main {
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    h2 {
+        margin: 1rem;
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    .inputDatos {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    
+    #contenedorBaldozas, #contenedorCarrito{
+        text-align: center;
+        margin: 0.3rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #contenedorBaldozas div, #contenedorCarrito div {
+        margin: 1rem;
+        border: 1px solid grey;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+    }
+    #contenedorBaldozas div p, #contenedorCarrito div p {
+        margin: 0.5rem;
+    }
+    .baldoza {
+        background-color: black;
+        color: white;
+        border-radius: 6px;
+        width: 10rem;
+        text-align: center;
+    }
+    .btnCarrito {
+        margin: 1rem;
+        padding: 0.5rem;
+        border-radius: 6px;
+        text-align: center;
+        border: 2px solid #DFBA69;
+        color: black;
+        font-size: 15px;
+        text-decoration: none;
+        transition: all 0.1s ease-in-out;
+    }
+    .btnCarrito:active {
+        background-color: #DFBA69;
+    }
+    
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        padding: 20px;
+        color: #9999;
+        border-radius: 3px;
+        background: rgba(0, 0, 0, 0.1);
 
+    }
+    
+    form label {
+        color: black;
+        text-align: center;
+    }
+    form input {
+        position: relative;
+        width: 70%;
+        margin: 0.5rem;
+        padding: 7px;
+        font-size: 17px;
+        border: none; 
+    }
+    
+    .boton{
+        background-color: #1d1b1e;
+        color: #DFBA69;
+        margin: 0.5rem;
+        padding: 20px;
+        transition: all 0.2s ease;
+        width: 100%;
+    }
+    
+    .boton:active {
+        background-color: #DFBA69;
+        color: #1d1b1e; 
+    }
+    
+    .boton2 {
+        width: 80%;
+        background-color: #1d1b1e;
+        margin: 0.7rem;
+        color: #DFBA69;
+        padding: 12px;
+        transition: all 0.2s ease;
+    }
+    .boton2:active {
+        background-color: white;
+        color: black;
+        cursor: pointer;
+    }
+    
+    .precioCarrito {
+        background-color: #DFBA69;
+        border-radius: 5px;
+        padding: 0.5rem;
+        color: #1d1b1e;
+        font-size: larger;
+    }
+    .baldozaImg {
+        margin: 0.5rem;
+        width: 30%;
+    }
+    
+    #totalCompra {
+        padding: 0.5rem;
+        border: 1px solid #1d1b1e;
+        border-radius: 5px;
+    }
+}
+@media (min-width: 577px) {
+    main {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    h2 {
+        margin: 1rem;
+        text-align: center;
+    }
+    .inputDatos {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    
+    #contenedorBaldozas, #contenedorCarrito{
+        text-align: center;
+        margin: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #contenedorBaldozas div, #contenedorCarrito div {
+        margin: 1rem;
+        border: 1px solid grey;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+    #contenedorBaldozas div p, #contenedorCarrito div p {
+        margin: 1rem;
+    }
+    .baldoza {
+        background-color: black;
+        color: white;
+        border-radius: 6px;
+        width: 10rem;
+        text-align: center;
+    }
+    .btnCarrito {
+        margin: 1rem;
+        padding: 0.5rem;
+        border-radius: 6px;
+        text-align: center;
+        border: 2px solid #DFBA69;
+        color: black;
+        font-size: 15px;
+        text-decoration: none;
+        transition: all 0.1s ease-in-out;
+    }
+    .btnCarrito:hover {
+        background-color: #DFBA69;
+    }
+    
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        padding: 20px;
+        color: #9999;
+        border-radius: 3px;
+        background: rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+    }
+    
+    form label {
+        color: black;
+        text-align: center;
+    }
+    form input {
+        position: relative;
+        width: 70%;
+        margin: 0.5rem;
+        padding: 7px;
+        font-size: 17px;
+        border: none; 
+    }
+    
+    .boton{
+        background-color: #1d1b1e;
+        color: #DFBA69;
+        padding: 20px;
+        transition: all 0.2s ease;
+        width: 100%;
+    }
+    
+    .boton:hover {
+        background-color: #DFBA69;
+        color: #1d1b1e; 
+    }
+    
+    .boton2 {
+        background-color: #1d1b1e;
+        margin: 1rem;
+        color: #DFBA69;
+        padding: 20px;
+        transition: all 0.2s ease;
+        width: 30%;
+    }
+    .boton2:hover {
+        background-color: white;
+        color: black;
+        cursor: pointer;
+    }
+    
+    .precioCarrito {
+        background-color: #DFBA69;
+        border-radius: 5px;
+        padding: 0.5rem;
+        color: #1d1b1e;
+        font-size: larger;
+    }
+    .baldozaImg {
+        margin: 0.5rem;
+        width: 40%;
+    }
+    
+    #totalCompra {
+        padding: 0.5rem;
+        border: 1px solid #1d1b1e;
+        border-radius: 5px;
+    }
+}
 
-main {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-h2 {
-    margin: 1rem;
-}
-.inputDatos {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-
-#contenedorBaldozas, #contenedorCarrito{
-    text-align: center;
-    margin: 0.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-#contenedorBaldozas div, #contenedorCarrito div {
-    margin: 1rem;
-    border: 1px solid grey;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-}
-#contenedorBaldozas div p, #contenedorCarrito div p {
-    margin: 1rem;
-}
-.baldoza {
-    background-color: black;
-    color: white;
-    border-radius: 6px;
-    width: 10rem;
-    text-align: center;
-}
-.btnCarrito {
-    margin: 1rem;
-    padding: 0.5rem;
-    border-radius: 6px;
-    text-align: center;
-    border: 2px solid #DFBA69;
-    color: black;
-    font-size: 15px;
-    text-decoration: none;
-    transition: all 0.1s ease-in-out;
-}
-.btnCarrito:hover {
-    background-color: #DFBA69;
-}
-
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 60%;
-    padding: 20px;
-    color: #9999;
-    border-radius: 3px;
-    background: rgba(0, 0, 0, 0.1);
-    margin-right: 10px;
-}
-
-form label {
-    color: black;
-    text-align: center;
-}
-form input {
-    position: relative;
-    width: 70%;
-    margin: 0.5rem;
-    padding: 7px;
-    font-size: 17px;
-    border: none; 
-}
-
-.boton{
-    background-color: #1d1b1e;
-    color: #DFBA69;
-    padding: 20px;
-    transition: all 0.2s ease;
-    width: 100%;
-}
-
-.boton:hover {
-    background-color: #DFBA69;
-    color: #1d1b1e; 
-}
-
-.boton2 {
-    background-color: #1d1b1e;
-    margin: 1rem;
-    color: #DFBA69;
-    padding: 20px;
-    transition: all 0.2s ease;
-    width: 30%;
-}
-.boton2:hover {
-    background-color: white;
-    color: black;
-    cursor: pointer;
-}
-
-.precioCarrito {
-    background-color: #DFBA69;
-    border-radius: 5px;
-    padding: 0.5rem;
-    color: #1d1b1e;
-    font-size: larger;
-}
-.baldozaImg {
-    margin: 0.5rem;
-    width: 40%;
-}
-
-#totalCompra {
-    padding: 0.5rem;
-    border: 1px solid #1d1b1e;
-    border-radius: 5px;
-}
 
 footer {
     text-align: center;
     padding: 1rem;
     color: #DFBA69; 
-    background-color: #1d1b1e;
+    background-color: #363437;
 }
 footer a{
     text-decoration: none;
