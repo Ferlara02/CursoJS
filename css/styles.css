@@ -304,6 +304,10 @@ header ul {
     }
 }
 
+.toastify {
+
+    color: #1d1b1e;
+}
 
 footer {
     text-align: center;

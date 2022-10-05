@@ -47,7 +47,8 @@ formDatos.addEventListener("submit", (e) => {
         Swal.fire({
             title: "No deje campos vacíos.",
             icon: "warning",
-            confirmButtonText: "Aceptar"
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#DFBA69"
         });
     }else {
         calculaCantidad();
@@ -133,7 +134,8 @@ eliminarCarritoTotal.addEventListener("click", () => {
                 Swal.fire({
                     title:"Carrito eliminado",
                     icon: "success",
-                    confirmButtonText: "Aceptar"
+                    confirmButtonText: "Aceptar",
+                    confirmButtonColor: "#DFBA69"
                 });
             }
         })
@@ -166,6 +168,8 @@ const agregaAlCarrito = (nombre) => {
         duration: 1000,
         position: "right",
         gravity: "bottom",
+        classname: "toastify",
+        backgroundColor: "#DFBA69"
     }).showToast();
 }
 
