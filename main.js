@@ -108,6 +108,7 @@ const mostrarCarrito = document.getElementById("mostrarCarrito");
 mostrarCarrito.addEventListener("click", () => {
     actualizaCarrito();
     calculaTotalCompra();
+    console.log(carrito)
 });
 
 /** BOTON ELIMINAR TOTAL CARRITO **/
@@ -177,6 +178,7 @@ const agregaAlCarrito = (nombre) => {
 function eliminaDelCarrito(nombre) {
     const baldozaElim = carrito.find(baldoza => baldoza.nombre === nombre);
     carrito.splice(carrito.indexOf(baldozaElim), 1);
+    localStorage.setItem("baldozasCarrito", JSON.stringify(carrito));
     actualizaCarrito();
     calculaTotalCompra();
 }
