@@ -116,9 +116,9 @@ mostrarCarrito.addEventListener("click", () => {
 eliminarCarritoTotal.addEventListener("click", () => {
     carrito.length !== 0 &&
         Swal.fire({
-            title: "¿Seguro que quiere eliminar todo el carrito?",
+            title: "¿Seguro que quiere vaciar el carrito?",
             icon: "warning",
-            confirmButtonText: "Aceptar",
+            confirmButtonText: "Vaciar",
             confirmButtonColor: "#1d1b1e",
             showCancelButton: true,
             cancelButtonText: "Cancelar",
