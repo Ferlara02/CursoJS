@@ -179,6 +179,14 @@ function eliminaDelCarrito(nombre) {
     const baldozaElim = carrito.find(baldoza => baldoza.nombre === nombre);
     carrito.splice(carrito.indexOf(baldozaElim), 1);
     localStorage.setItem("baldozasCarrito", JSON.stringify(carrito));
+    Toastify({
+        text: "Producto eliminado del carrito.",
+        duration: 1000,
+        position: "right",
+        gravity: "bottom",
+        classname: "toastify",
+        backgroundColor: "#f32e24"
+    }).showToast();
     actualizaCarrito();
     calculaTotalCompra();
 }
