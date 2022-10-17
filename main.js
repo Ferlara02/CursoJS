@@ -202,3 +202,4 @@ const calculaTotalCompra = () => {
     totalSpan.innerHTML = (total).toFixed(2);
 }
 
+
