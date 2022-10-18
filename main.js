@@ -57,7 +57,7 @@ formDatos.addEventListener("submit", (e) => {
             const div = document.createElement("div");
             div.innerHTML = `<h3 class="baldoza"> ${(baldoza.nombre).toUpperCase()}</h3>
                         <p>Cantidad de baldozas: ${(baldoza.cantidad).toFixed(1)} </p>
-                        <p>Tamaño baldoza: ${baldoza.lado1}cm X ${baldozaPersonalizada.lado2}cm.</p>
+                        <p>Tamaño baldoza: ${baldoza.lado1}cm X ${baldoza.lado2}cm.</p>
                         <p>Área del ambiente: ${baldoza.ancho * baldoza.largo}m² </p>
         
                         <button class="btnCarrito" id = "carritoBoton${arrayBaldozas.indexOf(baldoza)}">Agregar al <i class="fa-solid fa-cart-shopping"></i> </button>`;
@@ -71,6 +71,32 @@ formDatos.addEventListener("submit", (e) => {
     }
     formDatos.reset();
 });
+
+
+// Boton mostrar cálculos
+
+const mostrarHist = document.getElementById("mostrarHist");
+
+
+arrayBaldozas.length !== 0 &&
+    mostrarHist.addEventListener("click", ()=> {
+        contenedorBaldozas.innerHTML = ``;
+        arrayBaldozas.forEach(baldoza => {
+            const div = document.createElement("div");
+            div.innerHTML = `<h3 class="baldoza"> ${(baldoza.nombre).toUpperCase()}</h3>
+                        <p>Cantidad de baldozas: ${(baldoza.cantidad).toFixed(1)} </p>
+                        <p>Tamaño baldoza: ${baldoza.lado1}cm X ${baldoza.lado2}cm.</p>
+                        <p>Área del ambiente: ${baldoza.ancho * baldoza.largo}m² </p>
+        
+                        <button class="btnCarrito" id = "carritoBoton${arrayBaldozas.indexOf(baldoza)}">Agregar al <i class="fa-solid fa-cart-shopping"></i> </button>`;
+            contenedorBaldozas.appendChild(div);
+            const carritoBoton = document.getElementById(`carritoBoton${arrayBaldozas.indexOf(baldoza)}`);
+            carritoBoton.addEventListener("click", () => {
+                agregaAlCarrito(baldoza.nombre);
+                console.log(carrito);
+            });
+        });
+    });
 
 //Boton borrar calculos
 

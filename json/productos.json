@@ -1,5 +1,6 @@
 [
     {"nombre": "baldoza1", "precio": 40, "lado1": 20, "lado2": 20},
     {"nombre": "baldoza2", "precio": 50, "lado1": 15, "lado2": 30},
-    {"nombre": "baldoza3", "precio": 60, "lado1": 40, "lado2": 40}
+    {"nombre": "baldoza3", "precio": 60, "lado1": 30, "lado2": 30},
+    {"nombre": "baldoza4", "precio": 70, "lado1": 40, "lado2": 40}
 ]

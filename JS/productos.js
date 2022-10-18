@@ -17,10 +17,11 @@ fetch(baldozasProductos)
             const div = document.createElement("div");
             div.innerHTML += `<h3 class="baldoza"> ${(baldoza.nombre).toUpperCase()}</h3>
             <img class = "baldozaImg" src="../img/${baldoza.nombre}.png" alt="Baldoza">
-            <p>Tamaño baldoza: ${baldoza.lado1}cm X ${baldoza.lado2}cm.</p>
-            <label for="cantidadProd">Cantidad de baldozas: </label>
-            <input type="number" name="" id="cantProducto${baldoza.nombre}">
-
+            <p>Tamaño: ${baldoza.lado1}cm X ${baldoza.lado2}cm.</p>
+            <div class="labelEInput">
+                <label for="cantidadProd">Cantidad de baldozas: </label>
+                <input type="number" name="" id="cantProducto${baldoza.nombre}" placeholder="Ingrese la cantidad">
+            </div>
             <button class="btnCarrito" id = "botonComprar${datos.indexOf(baldoza)}">Comprar</button>`
             productos.appendChild(div);
 
