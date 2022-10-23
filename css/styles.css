@@ -216,6 +216,7 @@ header ul {
         padding: 0.5rem;
         border: 1px solid #1d1b1e;
         border-radius: 5px;
+        margin: 1rem;
     }
 }
 @media (min-width: 577px) {
