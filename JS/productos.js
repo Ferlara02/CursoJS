@@ -1,7 +1,3 @@
-/* RECUPERO FUNCION Y ARRAY DE MAIN */
-
-
-
 
 /******** FETCH con ruta relativa para baldozas en productos ****/
 
@@ -9,6 +5,7 @@ const productos = document.getElementById("contenedorProductos");
 
 const baldozasProductos = "../json/productos.json";
 
+const search = document.getElementById("searchBaldozas");
 
 fetch(baldozasProductos)
     .then(response => response.json())
@@ -54,3 +51,6 @@ fetch(baldozasProductos)
         });
     })
     .catch(error => console.log(error))
+
+
+    

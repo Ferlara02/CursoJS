@@ -13,6 +13,7 @@ body {
 header {
     text-align: center;
     padding-top: 1.3rem;
+    padding-bottom: 1rem;
     width: 100%;
     background-color: #DFBA69;
     display: flex;
@@ -54,6 +55,7 @@ header ul {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
 @media (max-width: 576px) {
     main {
         margin-top: 0.5rem;
